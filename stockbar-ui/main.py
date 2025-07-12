@@ -9,10 +9,7 @@ import yaml  # Third-party library for reading/writing YAML
 # -----------------------------------------------------
 
 # Define the path to config.yaml used by the SwiftBar plugin
-# This assumes config.yaml is located in: ../SwiftBarPlugins/config.yaml
-CONFIG_PATH = os.path.abspath(os.path.join(
-    os.path.dirname(__file__), "..", "SwiftBarPlugins", "config.yaml"
-))
+CONFIG_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "config.yaml"))
 
 # -----------------------------------------------------
 # UTILITY FUNCTIONS

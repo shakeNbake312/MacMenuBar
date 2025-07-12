@@ -8,7 +8,8 @@ import yaml  # For reading YAML config files
 import yfinance as yf  # For fetching real-time stock data
 
 # Path to the config file (same directory as this script)
-CONFIG_PATH = os.path.join(os.path.dirname(__file__), "config.yaml")
+CONFIG_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "config.yaml"))
+
 
 def load_symbols():
     """
@@ -28,42 +29,86 @@ def load_symbols():
         return []
 
 def main():
-    """
-    Main SwiftBar plugin logic:
-    - Reads symbols from config
-    - Prints header and stock data for each symbol
-    - Output is picked up by SwiftBar and displayed in the menu bar
-    """
+    # Load the list of stock symbols from config.yaml
     symbols = load_symbols()
 
+    # If no symbols are configured, show a fallback message in the menu bar
     if not symbols:
-        # If no symbols are configured, show a fallback
         print("📉 No symbols configured")
         return
 
-    # Show number of tracked symbols in the menu bar
-    print(f"🧾 {len(symbols)}")
-    print("---")  # SwiftBar syntax: separates the dropdown from the title
+    # --------------------------------------------
+    # Initialize output containers:
+    # - output_lines: formatted dropdown entries with color
+    # - menu_symbols: compact summary with emoji for menu bar
+    # --------------------------------------------
+    output_lines = []
+    menu_symbols = []
 
+    # Loop through each configured ticker symbol
     for symbol in symbols:
         try:
+            # Use yfinance to fetch intraday data for the current day
             ticker = yf.Ticker(symbol)
-            hist = ticker.history(period="1d")  # Get today's open/close data
+            hist = ticker.history(period="1d")
 
+            # If no data is available, handle gracefully
             if hist.empty:
-                print(f"{symbol}: no data")
+                output_lines.append(f"{symbol}: no data")
+                menu_symbols.append(f"⚪ {symbol}")
                 continue
 
-            current = hist["Close"].iloc[-1]  # Latest price
-            open_price = hist["Open"].iloc[0]  # Opening price
-            change = ((current - open_price) / open_price) * 100  # Percent change
+            # Extract most recent closing price and today's open
+            current = hist["Close"].iloc[-1]
+            open_price = hist["Open"].iloc[0]
 
-            # Display: e.g., AAPL: $192.34 (+1.23%)
-            print(f"{symbol}: ${current:.2f} ({change:+.2f}%)")
-        except Exception as e:
-            # If there's a problem with this symbol, display the error
-            print(f"{symbol}: error")
-            print(f"-- {e}")
+            # Calculate percent change since market open
+            change = ((current - open_price) / open_price) * 100
+
+            # --------------------------------------------
+            # Determine visual indicators:
+            # - Dropdown color (using SwiftBar's color tag)
+            # - Emoji icon for menu bar
+            # --------------------------------------------
+            if change > 0:
+                color = "#00cc00"  # green
+                emoji = "🟢"
+            elif change < 0:
+                color = "#cc0000"  # red
+                emoji = "🔴"
+            else:
+                color = "#cccccc"  # gray (no movement)
+                emoji = "⚪"
+
+            # Format dropdown line with price and percent change + color
+            dropdown_line = f"{symbol} {current:.0f} ({change:+.2f}%) | color={color}"
+            output_lines.append(dropdown_line)
+
+            # Format menu bar entry
+            menu_symbols.append(f"{emoji} {symbol} {current:.0f} ({change:+.2f}%)")
+
+
+        except Exception:
+            # Handle unexpected errors during data fetch
+            output_lines.append(f"{symbol}: error")
+            menu_symbols.append(f"⚠️ {symbol}")
+
+    # --------------------------------------------
+    # MENU BAR OUTPUT (top line)
+    # - Combine all emoji-enhanced ticker lines into one string
+    # - This line is shown in the menu bar
+    # - Must NOT include SwiftBar metadata (like "| color")
+    # --------------------------------------------
+    print("  ".join(menu_symbols))
+
+    # --------------------------------------------
+    # DROPDOWN OUTPUT (lines after '---')
+    # - Each line includes price + percent change with color styling
+    # --------------------------------------------
+    print("---")
+    for line in output_lines:
+        print(line)
+
 
 # Only run if this script is executed directly (standard Python entry point)
 if __name__ == "__main__":

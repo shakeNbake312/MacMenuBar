@@ -1,11 +1,4 @@
 {
-  "folders": [
-    {
-      "path": "SwiftBarPlugins"
-    },
-    {
-      "path": "stockbar-ui"
-    }
-  ],
+  "folders": [{ "path": "." }],
   "settings": {}
 }

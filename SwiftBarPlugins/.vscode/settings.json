@@ -175,5 +175,7 @@
   // Format YAML files using Prettier
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "jupyter.interactiveWindow.creationMode": "splitView",
+  "jupyter.interactiveWindow.codeLens.enable": true
 }
