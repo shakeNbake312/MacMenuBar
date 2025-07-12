@@ -1,0 +1,179 @@
+{
+  // ========================================================
+  // VS Code SETTINGS (macOS)
+  // Used to control global and per-language IDE behavior,
+  // formatting, terminals, git integration, encoding, etc.
+  // ========================================================
+
+  // ===============================
+  // Save the file automatically when focus is lost
+  // ===============================
+  "files.autoSave": "onFocusChange",
+
+  // ===============================
+  // FORMATTING & EDITOR BEHAVIOR
+  // ===============================
+
+  // Use spaces when pressing the Tab key
+  "editor.insertSpaces": true,
+
+  // Set indentation width to 2 spaces
+  "editor.tabSize": 2,
+
+  // Automatically format files when saving
+  "editor.formatOnSave": true,
+
+  // Remove trailing spaces at the end of lines on save
+  "files.trimTrailingWhitespace": true,
+
+  // Add a newline to the end of the file if missing
+  "files.insertFinalNewline": true,
+
+  // Wrap long lines in the editor
+  "editor.wordWrap": "on",
+
+  // Show line numbers in the gutter
+  "editor.lineNumbers": "on",
+
+  // Highlight matching pairs of brackets
+  "editor.matchBrackets": "always",
+
+  // ===============================
+  // TERMINAL & SHELL SETTINGS
+  // ===============================
+  // This defines a custom integrated terminal profile for macOS named "Zen".
+  // It tells VS Code to use /bin/zsh (Z shell) as the terminal program,
+  // and to launch it as a "login shell" using the -l flag.
+  // A login shell loads profile files like .zprofile or .zshrc.
+  "terminal.integrated.profiles.osx": {
+    "Zen": {
+      // Set the shell path to Zsh
+      "path": "/bin/zsh",
+
+      // Launch Zsh as a login shell
+      "args": ["-l"]
+    }
+  },
+
+  // Set "Zen" as the default terminal profile
+  "terminal.integrated.defaultProfile.osx": "Zen",
+
+  // Set maximum scrollback buffer for terminal output
+  "terminal.integrated.scrollback": 10000,
+
+  // ===============================
+  // GIT & SOURCE CONTROL
+  // ===============================
+
+  // Automatically fetch Git changes in the background
+  "git.autofetch": true,
+
+  // Prompt before pushing commits to remote
+  "git.confirmSync": true,
+
+  // Show the last Git commit info inline if GitLens is installed
+  "gitlens.currentLine.enabled": true,
+
+  // ===============================
+  // CSV/FILE ENCODING
+  // ===============================
+
+  // Use UTF-8 with BOM for CSV files (helps Excel detect encoding)
+  "[csv]": {
+    "files.encoding": "utf8bom"
+  },
+
+  // ===============================
+  // EXTENSION & TOOL SUPPORT
+  // ===============================
+
+  // ---------- Python ----------
+
+  // Activate the Python environment automatically in the terminal
+  "python.terminal.activateEnvironment": true,
+
+  // Use Pylance as the Python IntelliSense engine
+  "python.languageServer": "Pylance",
+
+  // Enable linting for Python code
+  "python.linting.enabled": true,
+
+  // Use flake8 as the Python linter
+  "python.linting.flake8Enabled": true,
+
+  // Use Black as the Python formatter
+  "python.formatting.provider": "black",
+
+  // Load environment variables from this file
+  "python.envFile": "${workspaceFolder}/.env",
+
+  // Preferred Python interpreter path (optional)
+  "python.defaultInterpreterPath": "/Users/dino/.pyenv/versions/swiftbar-plugins-env/bin/python",
+
+  // ---------- Jupyter ----------
+
+  // Use a side-by-side window for interactive Jupyter cells
+  "jupyter.interactiveWindowMode": "splitView",
+
+  // Don't prompt for kernel restart when running cells
+  "jupyter.askForKernelRestart": false,
+
+  // Show code lens above each Jupyter cell (run/debug options)
+  "jupyter.enableCellCodeLens": true,
+
+  // ---------- Markdown / Quarto / Pandoc ----------
+
+  // Enable word wrap for Markdown files
+  "[markdown]": {
+    "editor.wordWrap": "on",
+
+    // Disable quick autocomplete in Markdown files
+    "markdown.extension.toc.levels": [2, 3, 4],
+
+    // Disable autoformatting for Markdown
+    "editor.formatOnSave": false
+  },
+
+  // Generate table of contents from headers 2 to 4
+  "markdown.extension.toc.levels": "2..4",
+
+  // Use soft line breaks in Markdown preview
+  "markdown.preview.breaks": true,
+
+  // ---------- JavaScript / Next.js / Node ----------
+
+  // Use Prettier as the default formatter for JS/TS
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // Format JavaScript files on save
+  "[javascript]": {
+    "editor.formatOnSave": true
+  },
+
+  // Format React JSX files on save
+  "[javascriptreact]": {
+    "editor.formatOnSave": true
+  },
+
+  // Format TypeScript files on save
+  "[typescript]": {
+    "editor.formatOnSave": true
+  },
+
+  // Format TypeScript + JSX files on save
+  "[typescriptreact]": {
+    "editor.formatOnSave": true
+  },
+
+  // ---------- YAML / JSON / TOML ----------
+
+  // Format JSON files using Prettier
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // Format YAML files using Prettier
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
