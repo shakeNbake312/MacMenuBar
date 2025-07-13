@@ -9,6 +9,7 @@
 # Misc
 config.yaml
 stock_symbol_editor.log
+swiftbar-reset.command
 
 # stockbar-ui project
 stockbar-ui/__pycache__/
