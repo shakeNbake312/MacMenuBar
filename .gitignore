@@ -2,6 +2,26 @@
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
+# VSCode
+- .vscode/
+- .code-workspace
+
+# Misc
+- config.yaml
+
+# stockbar-ui project
+stockbar-ui/__pycache__/
+stockbar-ui/*.pyc
+stockbar-ui/.env
+stockbar-ui/.DS_Store
+stockbar-ui/venv/
+
+# SwiftBar Python Plugins
+SwiftBarPlugins/.venv/
+SwiftBarPlugins/__pycache__/
+SwiftBarPlugins/*.pyc
+SwiftBarPlugins/config.yaml
+
 ## User settings
 xcuserdata/
 
@@ -89,17 +109,3 @@ fastlane/test_output
 
 iOSInjectionProject/
 .DS_Store
-
-# SwiftBar Python Plugins
-SwiftBarPlugins/.venv/
-SwiftBarPlugins/__pycache__/
-SwiftBarPlugins/*.pyc
-SwiftBarPlugins/config.yaml
-
-# stockbar-ui project
-stockbar-ui/__pycache__/
-stockbar-ui/*.pyc
-stockbar-ui/.env
-stockbar-ui/.DS_Store
-stockbar-ui/venv/
-stockbar-ui/.vscode/

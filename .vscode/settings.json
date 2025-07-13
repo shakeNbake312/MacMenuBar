@@ -1,0 +1,4 @@
+{
+  "python.defaultInterpreterPath": "python",  // Use system/default
+  "python.terminal.activateEnvironment": false
+}
