@@ -109,6 +109,9 @@ def main():
     for line in output_lines:
         print(line)
 
+    # Add menu item to launch config editor
+    print("Open Config Editor | bash='/usr/bin/open' param1='-a' param2='Terminal' param3='/Users/dino/Workspace/MacMenuBar/launch-config.command' terminal=false")
+
 
 # Only run if this script is executed directly (standard Python entry point)
 if __name__ == "__main__":

@@ -123,19 +123,23 @@
 
   // ---------- Markdown / Quarto / Pandoc ----------
 
-  // Enable word wrap for Markdown files
   "[markdown]": {
+    // Enable word wrap for Markdown files
     "editor.wordWrap": "on",
 
-    // Disable quick autocomplete in Markdown files
-    "markdown.extension.toc.levels": [2, 3, 4],
+    // Disable quick autocomplete in Markdown files (in all contexts)
+    "editor.quickSuggestions": {
+      "other": false,
+      "comments": false,
+      "strings": false
+    },
 
     // Disable autoformatting for Markdown
-    "editor.formatOnSave": false
-  },
+    "editor.formatOnSave": false,
 
-  // Generate table of contents from headers 2 to 4
-  "markdown.extension.toc.levels": "2..4",
+    // Generate table of contents from headers 2 to 4
+    "markdown.extension.toc.levels": [2, 3, 4]
+  },
 
   // Use soft line breaks in Markdown preview
   "markdown.preview.breaks": true,
@@ -175,7 +179,5 @@
   // Format YAML files using Prettier
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "jupyter.interactiveWindow.creationMode": "splitView",
-  "jupyter.interactiveWindow.codeLens.enable": true
+  }
 }
