@@ -110,7 +110,8 @@ def main():
         print(line)
 
     # Add menu item to launch config editor
-    print("Open Config Editor | bash='/usr/bin/open' param1='-a' param2='Terminal' param3='/Users/dino/Workspace/MacMenuBar/launch-config.command' terminal=false")
+    print("Modify Stock Symbols | bash='/usr/bin/open' param1='-a' param2='Terminal' param3='/Users/dino/Workspace/MacMenuBar/launch-config.command' terminal=false")
+
 
 
 # Only run if this script is executed directly (standard Python entry point)
