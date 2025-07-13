@@ -3,11 +3,12 @@
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
 # VSCode
-- .vscode/
-- .code-workspace
+.vscode/
+.code-workspace
 
 # Misc
-- config.yaml
+config.yaml
+stock_symbol_editor.log
 
 # stockbar-ui project
 stockbar-ui/__pycache__/
